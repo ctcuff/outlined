@@ -17,5 +17,13 @@
       "matches": ["*://*/*"],
       "css": ["./css/outline.css"]
     }
-  ]
+  ],
+  "commands": {
+    "toggle-outline": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O"
+      },
+      "description": "Toggle outline"
+    }
+  }
 }
