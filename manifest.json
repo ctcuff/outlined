@@ -3,13 +3,13 @@
   "version": "1.0",
   "description": "Adds an outline to every element on the page.",
   "manifest_version": 2,
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "declarativeContent", "storage", "tabs", "*://*/*"],
   "background": {
     "scripts": ["./js/background.js"],
     "persistent": false
   },
   "options_page": "options.html",
-  "browser_action": {
+  "page_action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [
