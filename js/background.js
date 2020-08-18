@@ -20,22 +20,22 @@ chrome.runtime.onInstalled.addListener(() => {
       }
     ])
   })
+})
 
-  chrome.commands.onCommand.addListener(command => {
-    if (command === 'toggle-outline') {
-      const opts = {
-        // Prevents the command from running on
-        // chrome://* pages and new tab pages
-        url: ['*://*/*'],
-        active: true,
-        currentWindow: true
-      }
-
-      chrome.tabs.query(opts, tabs => {
-        if (tabs.length > 0) {
-          chrome.tabs.executeScript(tabs[0].id, { file: './js/content-script.js' })
-        }
-      })
+chrome.commands.onCommand.addListener(command => {
+  if (command === 'toggle-outline') {
+    const opts = {
+      // Prevents the command from running on
+      // chrome://* pages and new tab pages
+      url: ['*://*/*'],
+      active: true,
+      currentWindow: true
     }
-  })
+
+    chrome.tabs.query(opts, tabs => {
+      if (tabs.length > 0) {
+        chrome.tabs.executeScript(tabs[0].id, { file: './js/content-script.js' })
+      }
+    })
+  }
 })
