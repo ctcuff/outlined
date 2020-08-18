@@ -33,18 +33,14 @@ function setColorOption(outlineColor) {
   const cssCode = `document.documentElement.style.setProperty('--ext-oc', '${outlineColor}')`
   colorInput.value = outlineColor
 
-  chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-    chrome.tabs.executeScript(tabs[0].id, { code: cssCode })
-  })
+  executeCSS(cssCode)
 }
 
 function setWidthOption(outlineWidth) {
   const cssCode = `document.documentElement.style.setProperty('--ext-ow', '${outlineWidth}px')`
   width.innerText = `${outlineWidth}px`
 
-  chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-    chrome.tabs.executeScript(tabs[0].id, { code: cssCode })
-  })
+  executeCSS(cssCode)
 }
 
 function modifyOutlineWidth(amount) {
@@ -54,5 +50,18 @@ function modifyOutlineWidth(amount) {
       chrome.storage.sync.set({ outlineWidth: newWidth })
       setWidthOption(newWidth)
     }
+  })
+}
+
+function executeCSS(code) {
+  // Changing the width and CSS property settings
+  // updates those settings across all tabs
+  chrome.tabs.query({}, tabs => {
+    tabs.forEach(tab => {
+      // Excludes all chrome://* pages
+      if (tab.url && !tab.url.includes('chrome://')) {
+        chrome.tabs.executeScript(tab.id, { code })
+      }
+    })
   })
 }
