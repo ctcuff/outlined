@@ -1,5 +1,5 @@
 .___outline *,
 .___outline *::before,
 .___outline *::after {
-  outline: var(--ext-ow, 1px) solid var(--ext-oc, red);
+  outline: var(--ext-ow, 1px) solid var(--ext-oc, red) !important;
 }
