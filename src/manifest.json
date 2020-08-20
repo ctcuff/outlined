@@ -10,7 +10,8 @@
   },
   "options_page": "options.html",
   "page_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "./icons/icon-128.png"
   },
   "content_scripts": [
     {
@@ -25,5 +26,11 @@
       },
       "description": "Toggle outline"
     }
+  },
+  "icons": {
+    "16": "./icons/icon-16.png",
+    "32": "./icons/icon-32.png",
+    "64": "./icons/icon-64.png",
+    "128": "./icons/icon-128.png"
   }
 }
