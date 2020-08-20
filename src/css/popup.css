@@ -17,6 +17,7 @@ button#outline {
   border-radius: 1px;
   font-family: inherit;
   cursor: pointer;
+  font-size: 13px;
 }
 
 button#outline:active {
