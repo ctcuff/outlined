@@ -1,11 +1,12 @@
 ;(function () {
-  let hasOutline = document.body.dataset.hasOutline === 'true'
+  const hasOutline = document.documentElement.dataset.hasOutline === 'true'
+  const root = document.documentElement
 
   if (!hasOutline) {
-    document.body.classList.add('___outline')
+    root.classList.add('___outline')
   } else {
-    document.body.classList.remove('___outline')
+    root.classList.remove('___outline')
   }
 
-  document.body.dataset.hasOutline = !hasOutline ? 'true' : 'false'
+  root.dataset.hasOutline = !hasOutline ? 'true' : 'false'
 })()
