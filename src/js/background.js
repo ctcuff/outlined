@@ -4,8 +4,7 @@ chrome.runtime.onInstalled.addListener(() => {
     outlineWidth: 1
   })
 
-  // Only enables the extension popup on pages that don't start with
-  // http or https
+  // Only enables the extension popup on pages that start with http or https
   chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
     chrome.declarativeContent.onPageChanged.addRules([
       {
