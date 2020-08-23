@@ -19,6 +19,18 @@ chrome.runtime.onInstalled.addListener(() => {
       }
     ])
   })
+
+  chrome.contextMenus.create({
+    documentUrlPatterns: ['*://*/*'],
+    title: 'Toggle outline',
+    id: 'toggle-outline'
+  })
+})
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === 'toggle-outline') {
+    chrome.tabs.executeScript(tab.id, { file: './js/content-script.js' })
+  }
 })
 
 chrome.commands.onCommand.addListener(command => {
